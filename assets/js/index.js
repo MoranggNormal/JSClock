@@ -1,38 +1,36 @@
-function display_clock_time() {
-    let data = new Date()
-    horas = data.getHours()
-    horas = horas < 10 ? '0' + horas : horas;
+const data = new Date()
+const week_days = ['DOMINGO', 'SEGUNDA-FEIRA', 'TERÇA-FEIRA', 'QUARTA-FEIRA', 'QUINTA-FEIRA', 'SEXTA-FEIRA', 'SABADO'] 
 
-    let minutos = data.getMinutes()
-    minutos = minutos < 10 ? '0' + minutos : minutos;
+function clock(hour, minutes, seconds) {
+    hour = data.getHours()
+    hour = hour < 10 ? '0' + hour : hour;
 
-    let segundos = data.getSeconds()
-    segundos = segundos < 10 ? '0' + segundos : segundos;
+    minutes = data.getMinutes()
+    minutes = minutes < 10 ? '0' + minutes : minutes;
 
-    let dia_numero = data.getDate()
-    dia_numero = dia_numero < 10? '0' + dia_numero : dia_numero;
+    seconds = data.getSeconds()
+    seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    let mes_numero = data.getMonth() + 1
-    mes_numero = mes_numero < 10? '0' + mes_numero : mes_numero;
-
-    let ano = data.getFullYear()
-
-
-    let dia = data.getDate()
-    let dias = ['DOMINGO', 'SEGUNDA-FEIRA', 'TERÇA-FEIRA', 'QUARTA-FEIRA', 'QUINTA-FEIRA', 'SABADO']
-
-
-    document.getElementById('display-clock').innerHTML = `${horas}:${minutos}:${segundos}`;
-    document.getElementById('display-date').innerHTML = dias[dia];
-    document.getElementById('display-year').innerHTML = `${dia_numero}-${mes_numero}-${ano}`;
-    display_clock();
+    const show_clock = document.getElementById('display-clock').innerHTML = `${hour}:${minutes}:${seconds}`;
 }
 
+function yymmdd(year, month, date){
+    date = data.getDate()
+    date = date < 10 ? '0' + date : date;
 
-function display_clock() {
-    let clock_refresh_time = 1000;
-    clock_interval = setTimeout('display_clock_time()', clock_refresh_time)
-    return clock_interval
+    month = data.getMonth() + 1 // months in JS start in 0 so we must add +1
+    month = month < 10 ? '0' + month : month;
+
+    year = data.getFullYear()
+    
+    const show_yymmdd = document.getElementById('display-year').innerHTML = `${date}-${month}-${year}`
 }
 
-display_clock()
+function show_day(day){
+    day = date.getDate
+    const show_date = document.getElementById('display_date').innerHTML = day[week_days];
+}
+
+setInterval(clock, 1000)
+setInterval(yymmdd, 1000)
+setInterval(show_day, 1000)

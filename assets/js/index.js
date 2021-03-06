@@ -12,7 +12,7 @@ function display_clock_time() {
     let dia_numero = data.getDate()
     dia_numero = dia_numero < 10? '0' + dia_numero : dia_numero;
 
-    let mes_numero = data.getDate() - 1
+    let mes_numero = data.getMonth() + 1
     mes_numero = mes_numero < 10? '0' + mes_numero : mes_numero;
 
     let ano = data.getFullYear()
@@ -26,8 +26,6 @@ function display_clock_time() {
     document.getElementById('display-date').innerHTML = dias[dia];
     document.getElementById('display-year').innerHTML = `${dia_numero}-${mes_numero}-${ano}`;
     display_clock();
-
-    return clock
 }
 
 
